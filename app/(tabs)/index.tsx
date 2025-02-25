@@ -1,4 +1,4 @@
-import { View, Text, Image, Button, TouchableOpacity, TouchableHighlight, Pressable, SafeAreaView, StyleSheet } from 'react-native'
+import { View, Text, Image, Button, TouchableOpacity, TouchableHighlight, Pressable, SafeAreaView, StyleSheet, useColorScheme } from 'react-native'
 import React from 'react';
 import '@expo/metro-runtime';
 
@@ -6,9 +6,16 @@ const App = () => {
   const checkPress = () => {
     console.log('Button Pressed !!!!!!!!!!!!')
   }
+
+  const theme = useColorScheme();
+  const isDarkMode = theme === 'dark';
+
+  const backgroundColor = isDarkMode ? "black" : "white";
+  const textColor = isDarkMode ? "white" : "black"
+
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>React Native Mobile App</Text>
+    <SafeAreaView style={[styles.container, {backgroundColor: backgroundColor}]}>
+      <Text style={[styles.text, {color: textColor}]}>React Native Mobile App</Text>
       <Text>This is my first app</Text>
       <Image 
         source={{uri: 'https://create.microsoft.com/_next/image?url=https%3A%2F%2Fcdn.create.microsoft.com%2Fimages%2Fimage-creator-T02_juice.webp&w=1920&q=90'}}
@@ -58,7 +65,7 @@ const styles = StyleSheet.create({
     gap: 5
   },
   text: {
-    color:'orange',
+    // color:'orange',
     fontSize:30,
     fontWeight:500
   },
