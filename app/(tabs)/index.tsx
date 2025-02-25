@@ -1,4 +1,4 @@
-import { View, Text, Image, Button, TouchableOpacity, TouchableHighlight, Pressable, SafeAreaView, StyleSheet, useColorScheme } from 'react-native'
+import { View, Text, Image, Button, TouchableOpacity, TouchableHighlight, Pressable, SafeAreaView, StyleSheet, useColorScheme, ScrollView } from 'react-native'
 import React from 'react';
 import '@expo/metro-runtime';
 
@@ -51,11 +51,26 @@ const App = () => {
   //   </SafeAreaView>
   // )
   return (
-    <View style={styles.container}>
+    <ScrollView 
+      contentContainerStyle={{gap:5}} 
+      // using this horizontal this will scroll horizontally
+      horizontal
+      style={styles.container}
+    >
       <View style={styles.box1} />
       <View style={styles.box2} />
       <View style={styles.box3} />
-    </View>
+      <View style={styles.box1} />
+      <View style={styles.box2} />
+      <View style={styles.box3} />
+      <View style={styles.box1} />
+      <View style={styles.box2} />
+      <View style={styles.box3} />
+      <View style={styles.box1} />
+      <View style={styles.box2} />
+      <View style={styles.box3} />
+      <View style={[styles.box2,  {backgroundColor:'skyblue'}]} />
+    </ScrollView>
   )
 }
 
@@ -77,9 +92,12 @@ const styles = StyleSheet.create({
     // display:'flex',
     // justifyContent:'center',
     // alignItems:'center',
-    // backgroundColor: '#000',
-    // gap: 5,
-    flex: 1
+    // flexDirection: 'column',
+    backgroundColor: '#000',
+    gap: 5,
+    flex: 1,
+    // flexWrap:'wrap',
+    paddingTop:10
   },
   text: {
     // color:'orange',
@@ -103,15 +121,24 @@ const styles = StyleSheet.create({
     fontWeight:600
   },
   box1: {
-    flex: 1,
-    backgroundColor: 'red'
+    // flex: 1,
+    width: 80,
+    height: 80,
+    backgroundColor: 'red',
+    borderRadius:50
   },
   box2: {
-    flex: 2,
-    backgroundColor: 'yellow'
+    // flex: 2,
+    width: 80,
+    height: 80,
+    backgroundColor: 'yellow',
+    borderRadius:50
   },
   box3: {
-    flex: 3,
-    backgroundColor: 'green'
+    // flex: 3,
+    width: 80,
+    height: 80,
+    backgroundColor: 'green',
+    borderRadius:50
   }
 })
