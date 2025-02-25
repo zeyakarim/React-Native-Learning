@@ -1,4 +1,4 @@
-import { View, Text, Image, Button, TouchableOpacity, Alert, TouchableHighlight, Pressable } from 'react-native'
+import { View, Text, Image, Button, TouchableOpacity, Alert, TouchableHighlight, Pressable, SafeAreaView } from 'react-native'
 import React from 'react';
 import '@expo/metro-runtime';
 
@@ -7,7 +7,7 @@ const App = () => {
     console.log('Button Pressed !!!!!!!!!!!!')
   }
   return (
-    <View>
+    <SafeAreaView>
       <Text>React Native Mobile App</Text>
       <Text>This is my first app</Text>
       <Image 
@@ -39,9 +39,9 @@ const App = () => {
         style={{ padding: 10, backgroundColor:'yellow', borderRadius:10, alignItems: 'center', marginTop:10}}
         onPress={checkPress}
       >
-        <Text>BUTTON PRESSABLE</Text>
+        <Text style={{fontWeight:600}}>BUTTON PRESSABLE</Text>
       </Pressable>
-    </View>
+    </SafeAreaView>
   )
 }
 
