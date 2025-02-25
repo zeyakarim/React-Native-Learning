@@ -1,4 +1,4 @@
-import { View, Text, Image, Button, TouchableOpacity, Alert, TouchableHighlight, Pressable, SafeAreaView } from 'react-native'
+import { View, Text, Image, Button, TouchableOpacity, TouchableHighlight, Pressable, SafeAreaView, StyleSheet } from 'react-native'
 import React from 'react';
 import '@expo/metro-runtime';
 
@@ -7,8 +7,8 @@ const App = () => {
     console.log('Button Pressed !!!!!!!!!!!!')
   }
   return (
-    <SafeAreaView>
-      <Text>React Native Mobile App</Text>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.text}>React Native Mobile App</Text>
       <Text>This is my first app</Text>
       <Image 
         source={{uri: 'https://create.microsoft.com/_next/image?url=https%3A%2F%2Fcdn.create.microsoft.com%2Fimages%2Fimage-creator-T02_juice.webp&w=1920&q=90'}}
@@ -20,7 +20,7 @@ const App = () => {
       {/* Second Way to Button In UI */}
       {/* Touchable Opacity Provide multiple feature */}
       <TouchableOpacity 
-        style={{ padding: 10, backgroundColor:'orange', borderRadius:10, alignItems: 'center', marginTop:10}}
+        style={{ padding: 10, backgroundColor:'orange', borderRadius:50, alignItems: 'center', marginTop:10}}
         onPress={checkPress}
       >
         <Text style={{fontWeight:600}}>BUTTON</Text>
@@ -28,21 +28,54 @@ const App = () => {
 
       {/* HIGH LIGHT BUTTON */}
       <TouchableHighlight 
-        style={{ padding: 10, backgroundColor:'orange', borderRadius:10, alignItems: 'center', marginTop:10}}
+        style={{ padding: 10, backgroundColor:'orange', borderRadius:50, alignItems: 'center', marginTop:10}}
         onPress={checkPress}
-      >
+      > 
         <Text style={{fontWeight:600}}>BUTTON HIGHLIGHT</Text>
       </TouchableHighlight>
 
       {/* ADD BUTTON USING PRESSABLE THIS IS COMMANLY USED */}
       <Pressable
-        style={{ padding: 10, backgroundColor:'yellow', borderRadius:10, alignItems: 'center', marginTop:10}}
+        style={styles.buttonPressable}
         onPress={checkPress}
       >
-        <Text style={{fontWeight:600}}>BUTTON PRESSABLE</Text>
+        <Text style={styles.buttonText}>BUTTON PRESSABLE</Text>
       </Pressable>
     </SafeAreaView>
   )
 }
 
 export default App;
+
+const styles = StyleSheet.create({
+  container: {
+    width:'100%', 
+    height:'100%',
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center',
+    backgroundColor: '#ffffff',
+    gap: 5
+  },
+  text: {
+    color:'orange',
+    fontSize:30,
+    fontWeight:500
+  },
+  buttonPressable: {
+    // padding: 10,
+    width: 200, 
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor:'yellow', 
+    borderRadius:50, 
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop:10,
+    borderWidth: 2,
+    borderBottomColor: 'red'
+  },
+  buttonText: {
+    fontWeight:600
+  }
+})
