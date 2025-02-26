@@ -1,5 +1,6 @@
-import { View, Text, Image, Button, TouchableOpacity, TouchableHighlight, Pressable, SafeAreaView, StyleSheet, useColorScheme, ScrollView, FlatList } from 'react-native'
+import { View, Text, Image, Button, TouchableOpacity, TouchableHighlight, Pressable, SafeAreaView, StyleSheet, useColorScheme, ScrollView, FlatList, TextInput } from 'react-native'
 import '@expo/metro-runtime';
+import { useState } from 'react';
 
 const dummy = [
   { 
@@ -137,6 +138,9 @@ const dummy = [
 ]
 
 const App = () => {
+  const [text, setText] = useState('')
+  const [submittedText, setSubmittedText] = useState('')
+
   const checkPress = () => {
     console.log('Button Pressed !!!!!!!!!!!!')
   }
@@ -184,6 +188,11 @@ const App = () => {
   //     </Pressable>
   //   </SafeAreaView>
   // )
+  const handleSubmit = () => {
+    setSubmittedText(text)
+    setText('')
+  }
+
   return (
     <View 
       // contentContainerStyle={{gap:5}} 
@@ -204,7 +213,7 @@ const App = () => {
       <View style={styles.box2} />
       <View style={styles.box3} />
       <View style={[styles.box2,  {backgroundColor:'skyblue'}]} /> */}
-      <FlatList 
+      {/* <FlatList 
         data={dummy}
         renderItem={({item}) => (
           <View style={styles.card}>
@@ -223,7 +232,25 @@ const App = () => {
         columnWrapperStyle={{gap:10}}
         // extraData={} 
         // horizontal
+      /> */}
+      <TextInput 
+        style={styles.input} 
+        placeholder='Enter a text here' 
+        value={text}
+        // onChangeText={(text) => setText(text)}
+        onChangeText={setText}
+        // this will allow to write long text in multiline
+        multiline
+        // like paragraph
+        numberOfLines={4}
+        // keyboardType='number-pad'
+        // inputMode='numeric'
       />
+
+      <Text numberOfLines={2}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam maxime adipisci odit labore consequuntur ab iure nulla nihil nesciunt itaque. Assumenda omnis necessitatibus reprehenderit et quo. Consequuntur minus iusto ipsum.</Text>
+      <Button title='submit' onPress={handleSubmit}></Button>
+
+      {submittedText && <Text>Result: {submittedText}</Text>}
     </View>
   )
 }
@@ -305,5 +332,11 @@ const styles = StyleSheet.create({
     padding: 5,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  input: {
+    width: '100%',
+    padding: 5,
+    borderRadius:5,
+    borderWidth: 1
   }
 })
